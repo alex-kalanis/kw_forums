@@ -118,13 +118,13 @@ class Content
         $tagStarts = mb_strrpos($content, '<');
         $tagEnds = mb_strrpos($content, '>');
         if ((false !== $tagStarts) && ((false === $tagEnds) || (false !== $tagEnds) && ($tagStarts > $tagEnds))) { // unclosed tag
-            $foundOdd = mb_substr_count(mb_substr($content, $tagStarts), '"');
-            if ($foundOdd % 2) {
-                $content .= '"';
-            }
             $foundOdd = mb_substr_count(mb_substr($content, $tagStarts), "'");
             if ($foundOdd % 2) {
                 $content .= "'";
+            }
+            $foundOdd = mb_substr_count(mb_substr($content, $tagStarts), '"');
+            if ($foundOdd % 2) {
+                $content .= '"';
             }
             $content .= '>';
         }

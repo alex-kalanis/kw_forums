@@ -8,13 +8,7 @@ for shorting messages.
 ```
 {
     "require": {
-        "alex-kalanis/kw_forums": "dev-master"
-    },
-    "repositories": [
-        {
-            "type": "http",
-            "url":  "https://github.com/alex-kalanis/kw_forums.git"
-        }
+        "alex-kalanis/kw_forums": "1.0"
     }
 }
 ```
