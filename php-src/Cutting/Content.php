@@ -11,11 +11,16 @@ namespace kalanis\kw_forums\Cutting;
 class Content
 {
     // it's necessary to have both arrays sorted this way - it's for lookup by positions
+    /** @var string[] */
     protected static $OPENING_TAGS = ['<b ',  '<b>',  '<i ',  '<i>',  '<u ',  '<u>',  '<center>',  '<span>',  '<span ',  '<font color', '<font face', '<font size', '<font ', '<font', '<table ', '<table', '<tr>', '<td>', '<a ', '<a>'];
+    /** @var string[] */
     protected static $CLOSING_TAGS = ['</b>', '</b>', '</i>', '</i>', '</u>', '</u>', '</center>', '</span>', '</span>', '</font>', '</font>', '</font>', '</font>', '</font>', '</table>', '</table>', '</tr>', '</td>', '</a>', '</a>'];
 
+    /** @var int */
     protected $wordLengthNeedle = 20;
+    /** @var int */
     protected $maxLength = 0;
+    /** @var string */
     protected $content = '';
     /**
      * Contains positions of tags in
@@ -48,7 +53,9 @@ class Content
 
         // lookup for available end, the values has been found empirically
         $content = mb_substr($this->content, 0, $this->maxLength + $this->wordLengthNeedle);
-        $content = mb_substr($content, 0, mb_strrpos($content, ' ')) . ' ';
+        $len = mb_strrpos($content, ' ');
+        $len = false !== $len ? intval($len) : null;
+        $content = mb_substr($content, 0, $len) . ' ';
 
         $this->content = $this->closeQuotationMarks($this->contentCut($content)) . $this->fillCutTags() . ' ...';
         return $this;
@@ -71,10 +78,12 @@ class Content
                     if (!is_null($tagPosition)) {
                         // is correct one in array of closing tags?
                         $lastPosition = array_pop($this->tagPositionsStack);
-                        if (static::$CLOSING_TAGS[$tagPosition] == static::$CLOSING_TAGS[$lastPosition]) { // because there are multiple openings
-                            $i = $i + mb_strlen(static::$CLOSING_TAGS[$tagPosition]) - 2; // move to next available position in string
-                        } else {
-                            $this->tagPositionsStack[] = $lastPosition;
+                        if (!is_null($lastPosition)) {
+                            if (static::$CLOSING_TAGS[$tagPosition] == static::$CLOSING_TAGS[$lastPosition]) { // because there are multiple openings
+                                $i = $i + mb_strlen(static::$CLOSING_TAGS[$tagPosition]) - 2; // move to next available position in string
+                            } else {
+                                $this->tagPositionsStack[] = $lastPosition;
+                            }
                         }
                     }
 //print_r(['is closing', $tagPosition, is_null($tagPosition) ? 'x' : static::$CLOSING_TAGS[$tagPosition]]);
