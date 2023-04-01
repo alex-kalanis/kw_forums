@@ -70,9 +70,9 @@ class Content
         $this->tagPositionsStack = [];
         for ($i = 0; $i <= mb_strlen($content); $i++) {
             // start tag sequence
-            if (mb_substr($content, $i, 1) == '<') {
+            if ('<' == mb_substr($content, $i, 1)) {
 //print_r(['found open', $i]);
-                if (mb_substr($content, $i + 1, 1) == '/') {
+                if ('/' == mb_substr($content, $i + 1, 1)) {
                     // closing tag
                     $tagPosition = $this->tagPosition(mb_strtolower(mb_substr($content, $i, 7)), static::$CLOSING_TAGS);
                     if (!is_null($tagPosition)) {
