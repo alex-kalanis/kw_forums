@@ -3,7 +3,7 @@
 ![Build Status](https://github.com/alex-kalanis/kw_forums/actions/workflows/code_checks.yml/badge.svg)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alex-kalanis/kw_forums/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/alex-kalanis/kw_forums/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/alex-kalanis/kw_forums/v/stable.svg?v=1)](https://packagist.org/packages/alex-kalanis/kw_forums)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 [![Downloads](https://img.shields.io/packagist/dt/alex-kalanis/kw_forums.svg?v1)](https://packagist.org/packages/alex-kalanis/kw_forums)
 [![License](https://poser.pugx.org/alex-kalanis/kw_forums/license.svg?v=1)](https://packagist.org/packages/alex-kalanis/kw_forums)
 [![Code Coverage](https://scrutinizer-ci.com/g/alex-kalanis/kw_forums/badges/coverage.png?b=master&v=1)](https://scrutinizer-ci.com/g/alex-kalanis/kw_forums/?branch=master)
