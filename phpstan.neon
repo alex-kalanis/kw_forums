@@ -1,6 +1,5 @@
 parameters:
 	level: 9
-		# more is problematic due callbacks
 	paths:
 		- 'php-src'
 #	scanFiles:
